@@ -6,7 +6,20 @@ from threading import Thread
 from python_files import checkFileForOverlaps, zerokWh_charges, checkFileForDiffernetIndexes, compareTwoFilesForIndexes
 
 app = Flask(__name__)
+FLASK_SHUTDOWN_ENDPOINT = "127.0.0.1:5000/shutdown"
 
+
+def shutdown_server():
+    func = request.environ.get('werkzeug.server.shutdown')
+    if func is None:
+        raise RuntimeError('Not running with the Werkzeug Server')
+    func()
+
+
+@app.route('/shutdown', methods=['GET'])
+def shutdown():
+    shutdown_server()
+    return 'Server shutting down...'
 
 @app.route('/')
 def root():
