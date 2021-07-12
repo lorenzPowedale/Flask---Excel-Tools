@@ -2,7 +2,8 @@
 import pandas as pd
 import unicodecsv
 
-output = ['CP communication unit', 'End timestamp', 'Start timestamp', 'Csid']
+output = ['CP communication unit', 'Energy stop (wh)', 'Energy initial (wh)', 'Csid', 'Start timestamp',
+          'End timestamp']
 
 
 # cleanses all 0s, NaNs and Nulls out of the DataFrame
@@ -43,5 +44,5 @@ def getTimeOverlaps(path):
     data_copy = data_copy[data_copy['End timestamp'].notnull()]
     data_copy['Start timestamp'] = data_copy['Start timestamp'].astype('str')
     data_copy['End timestamp'] = data_copy['End timestamp'].astype('str')
-    data_copy.to_excel(path[:path.rindex("/") + 1] + "overlapes.xlsx", index=False)
     print("Finished")
+    return data_copy

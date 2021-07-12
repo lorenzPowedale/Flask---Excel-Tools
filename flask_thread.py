@@ -3,7 +3,7 @@ import os
 import platform
 import subprocess
 from threading import Thread
-from python_files import checkFileForOverlaps, zerokWh_charges, checkFileForDiffernetIndexes, compareTwoFilesForIndexes
+from python_files import zerokWh_charges, compareTwoFilesForIndexes, check_overlap
 
 app = Flask(__name__)
 FLASK_SHUTDOWN_ENDPOINT = "127.0.0.1:5000/shutdown"
@@ -40,21 +40,6 @@ def comparePost():
     return render_template('success.html')
 
 
-@app.route('/gap', methods=['GET'])
-def gap():
-    return render_template('gap.html')
-
-
-@app.route('/gap', methods=['POST'])
-def gapPost():
-    path = request.form['text1']
-    time = request.form['time']
-    checkFileForDiffernetIndexes.getWrongIndexes(time, path)
-    path = path[:path.rindex("/") + 1]
-    open_folder(path)
-    return render_template('success.html')
-
-
 @app.route('/overlap', methods=['GET'])
 def overlap():
     return render_template('overlap.html')
@@ -63,7 +48,7 @@ def overlap():
 @app.route('/overlap', methods=['POST'])
 def overlapPost():
     path = request.form['text1']
-    checkFileForOverlaps.getTimeOverlaps(path)
+    check_overlap.getOverlaps(path)
     path = path[:path.rindex("/") + 1]
     open_folder(path)
     return render_template('success.html')

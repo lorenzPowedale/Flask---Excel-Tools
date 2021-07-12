@@ -18,10 +18,8 @@
         <div class="sidebar-heading border-bottom bg-light">Excel Tools</div>
         <div class="list-group list-group-flush">
             <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ url_for('root') }}">Dashboard</a>
-            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ url_for('compare') }}">GAPs
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ url_for('compare') }}">Gaps
                 between Months</a>
-            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ url_for('gap') }}">GAPs
-                in a File</a>
             <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ url_for('overlap') }}">Overlapping
                 charges</a>
             <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ url_for('zeroKwh') }}">0
@@ -40,16 +38,16 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                        <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="{{ url_for('root') }}">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="https://www.powerdale.com">Powerdale</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url_for('compare') }}">GAPs between Months</a>
-                                <a class="dropdown-item" href="{{ url_for('gap') }}">GAPs in a File</a>
+                                <a class="dropdown-item" href="{{ url_for('compare') }}">Gaps between Months</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ url_for('overlap') }}">Overlapping charges</a>
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ url_for('zeroKwh') }}">0 kWh Charges</a>
                             </div>
                         </li>

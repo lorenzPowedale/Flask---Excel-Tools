@@ -10,8 +10,8 @@ output = ['CP communication unit', 'Energy stop (wh)', 'Energy initial (wh)', 'C
 def cleanNull(data):
     print("Before 0kWh cleaning", len(data))
     data = data[data['Energy consumed (wh)'] != '']
-    data = data[data['Energy consumed (wh)'].astype('int64').notnull()]
-    data = data[data['Energy consumed (wh)'].astype('int64') != 0]
+    data = data[data['Energy consumed (wh)'].astype('float').notnull()]
+    data = data[data['Energy consumed (wh)'].astype('float') != 0]
     print("After 0kWh cleaning", len(data))
     return data
 
@@ -25,12 +25,11 @@ def read_csv(path):
 
 # converts excel .xlsx file into a pandas.Dataframe
 # Syntax e.g. 2021-06-01 00:00:00+02:00
-def getWrongIndexes(time, path):
+def getWrongIndexes(path):
     data = cleanNull(pd.DataFrame(read_csv(path)))
-    data['Energy stop (wh)'] = data['Energy stop (wh)'].astype('int64')
-    data['Energy initial (wh)'] = data['Energy initial (wh)'].astype('int64')
-    data['Energy consumed (wh)'] = data['Energy consumed (wh)'].astype('int64')
-    data = data[(data['End timestamp'].astype('str') >= time)]
+    data['Energy stop (wh)'] = data['Energy stop (wh)'].astype('float')
+    data['Energy initial (wh)'] = data['Energy initial (wh)'].astype('float')
+    data['Energy consumed (wh)'] = data['Energy consumed (wh)'].astype('float')
     # Grouping every 'CP communication unit' in month
     grouped_df = data.groupby(['CP communication unit'], axis=0, as_index=False)
 
@@ -45,4 +44,4 @@ def getWrongIndexes(time, path):
         group = group[group['Energy stop (wh)'] - group['Energy initial (wh)'] != 0]
         data_copy = data_copy.append(group)
     data_copy = data_copy[data_copy['Energy initial (wh)'].notnull()]
-    data_copy.to_excel(path[:path.rindex("/") + 1] + "wrong_Indexes.xlsx", index=False)
+    return data_copy
