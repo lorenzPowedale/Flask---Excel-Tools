@@ -4,10 +4,8 @@ import platform
 import subprocess
 from threading import Thread
 from python_files import checkFileForOverlaps, zerokWh_charges, checkFileForDiffernetIndexes, compareTwoFilesForIndexes
-from flask_dropzone import Dropzone
 
 app = Flask(__name__)
-dropzone = Dropzone(app)
 FLASK_SHUTDOWN_ENDPOINT = "127.0.0.1:5000/shutdown"
 def shutdown_server():
     func = request.environ.get('werkzeug.server.shutdown')
