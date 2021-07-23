@@ -43,7 +43,6 @@ def compareTwoFiles(path1, path2):
     diff = pd.concat([result['CP communication unit'], result['Energy stop (wh)'], result['Energy initial (wh)'], diff],
                      axis=1)
     diff.columns = ['CP communication unit', 'Energy stop (wh) in Month1', 'Energy initial (wh) in Month2', 'Difference']
-
     # saving the the rows where the index isn't as it should be to an Excel .xlsx file
     diff.to_excel(path1[:path1.rindex("/") + 1] + "output.xlsx", sheet_name='Irregularities', index=False)
 

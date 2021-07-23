@@ -2,9 +2,6 @@
 import pandas as pd
 import unicodecsv
 
-output = ['CP communication unit', 'Energy stop (wh)', 'Energy initial (wh)', 'Csid', 'Start timestamp',
-          'End timestamp']
-
 
 # cleanses all 0s, NaNs and Nulls out of the DataFrame
 def cleanNull(data):
@@ -16,17 +13,11 @@ def cleanNull(data):
     return data
 
 
-# reads a CSV file
-def read_csv(path):
-    with open(path, "rb") as f:
-        reader = list(unicodecsv.DictReader(f, delimiter=";"))
-        return reader
-
 
 # converts excel .xlsx file into a pandas.Dataframe
 # Syntax e.g. 2021-06-01 00:00:00+02:00
-def getWrongIndexes(path):
-    data = cleanNull(pd.DataFrame(read_csv(path)))
+def getWrongIndexes(df):
+    data = cleanNull(df)
     data['Energy stop (wh)'] = data['Energy stop (wh)'].astype('float')
     data['Energy initial (wh)'] = data['Energy initial (wh)'].astype('float')
     data['Energy consumed (wh)'] = data['Energy consumed (wh)'].astype('float')
@@ -38,10 +29,11 @@ def getWrongIndexes(path):
         group = grouped_df.get_group(key) \
             .assign(total=grouped_df.get_group(key)['Energy initial (wh)'].astype(int)) \
             .sort_values(by=['Energy initial (wh)'], axis=0)
-        group = group[output]
+
         group['Energy initial (wh)'] = group['Energy initial (wh)'].shift(-1)
         group = group[group['Energy initial (wh)'].notnull()]
         group = group[group['Energy stop (wh)'] - group['Energy initial (wh)'] != 0]
         data_copy = data_copy.append(group)
     data_copy = data_copy[data_copy['Energy initial (wh)'].notnull()]
+    data_copy['Reason'] = 'overlap(gap)'
     return data_copy
