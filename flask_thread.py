@@ -7,6 +7,8 @@ from python_files import zerokWh_charges, compareTwoFilesForIndexes, check_overl
 
 app = Flask(__name__)
 FLASK_SHUTDOWN_ENDPOINT = "127.0.0.1:5000/shutdown"
+
+
 def shutdown_server():
     func = request.environ.get('werkzeug.server.shutdown')
     if func is None:
@@ -18,6 +20,7 @@ def shutdown_server():
 def shutdown():
     shutdown_server()
     return 'Server shutting down...'
+
 
 @app.route('/')
 def root():
@@ -53,6 +56,7 @@ def overlapPost():
     open_folder(path)
     return render_template('success.html')
 
+
 @app.route('/oneFile', methods=['GET'])
 def oneFile():
     return render_template('overlap.html')
@@ -73,7 +77,7 @@ def zeroKwh():
 
 
 @app.route('/zeroKwh', methods=['POST'])
-def zweroKwHPost():
+def zeroKwHPost():
     path = request.form['text1']
     zerokWh_charges.getZerokWhCharges(path)
     path = path[:path.rindex("/") + 1]
@@ -89,10 +93,10 @@ def open_folder(path):
     else:
         subprocess.Popen(["xdg-open", path])
 
+
 class FlaskThread(Thread):
     def __init__(self):
         Thread.__init__(self)
 
     def run(self):
         app.run(port=5000, host='127.0.0.1')
-
