@@ -162,6 +162,7 @@ Project Link: [https://github.com/lorenzPowedale/Flask---Excel-Tools](https://gi
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 * [ReadMe Template](https://github.com/othneildrew/Best-README-Template)
+* [Simple Sidebar Template](https://startbootstrap.com/template/simple-sidebar)
 * [Guy who answered StackOverflow](https://stackoverflow.com/users/8479387/tlentali)
 
 
