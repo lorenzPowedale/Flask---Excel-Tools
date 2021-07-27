@@ -1,4 +1,4 @@
-# pip install openpyxl, pandas, unicodecsv
+# pip install openpyxl pandas unicodecsv
 import pandas as pd
 import unicodecsv
 
