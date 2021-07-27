@@ -45,7 +45,7 @@ def overlapPost():
 
 @app.route('/oneFile', methods=['GET'])
 def oneFile():
-    return render_template('overlap.html')
+    return render_template('allForOneFile.html')
 
 
 @app.route('/oneFile', methods=['POST'])
