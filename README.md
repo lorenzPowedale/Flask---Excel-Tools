@@ -63,6 +63,7 @@
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
+    <li><a href="#Issues">Issues</a></li>
   </ol>
 </details>
 
@@ -122,6 +123,12 @@ Use this space to show useful examples of how a project can be used. Additional 
 2. Select the tool you want to use
 ![Pitain][pitain-screenshot]
    
+3. Paste in the path (if this is not working see [Issues](#issues))
+![Path][path-screenshot]
+   
+
+3. Be happy and enjoy!
+![Path][success-screenshot]
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -158,6 +165,18 @@ Project Link: [https://github.com/lorenzPowedale/Flask---Excel-Tools](https://gi
 * [Guy who answered StackOverflow](https://stackoverflow.com/users/8479387/tlentali)
 
 
+<!-- ISSUES -->
+## Issues
+
+On Mac Terminal there is an Issue with the embeded browser Window.
+
+There is a workaround, it is very easy and doesn't take much time. It's just less comfortable
+
+You have to start the app.py file and then you
+have to start a WebBrowser (e.g. Google Chrome, Firefox, Edge etc.) and open the link http://localhost:5000 manually.
+
+This has exactly the same effect as the embeded window!!!
+
 
 
 
@@ -177,3 +196,5 @@ Project Link: [https://github.com/lorenzPowedale/Flask---Excel-Tools](https://gi
 [linkedin-url]: https://www.instagram.com/lorenzbauer_/
 [product-screenshot]: static/assets/img.png
 [pitain-screenshot]: static/assets/pitain.png 
+[success-screenshot]: static/assets/success.png 
+[path-screenshot]: static/assets/path.png 
