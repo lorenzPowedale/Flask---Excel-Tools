@@ -11,4 +11,6 @@ if __name__ == "__main__":
     flask_thread.start()
 
     webview.create_window('Excel Tools', "http://127.0.0.1:5000", width=1080, height=720)
+    webview.start(gui="mshtml")
     sys.exit(1)
+
