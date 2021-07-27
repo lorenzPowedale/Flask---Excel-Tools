@@ -6,20 +6,6 @@ from threading import Thread
 from python_files import zerokWh_charges, compareTwoFilesForIndexes, check_overlap, allErrorsInOneFile
 
 app = Flask(__name__)
-FLASK_SHUTDOWN_ENDPOINT = "127.0.0.1:5000/shutdown"
-
-
-def shutdown_server():
-    func = request.environ.get('werkzeug.server.shutdown')
-    if func is None:
-        raise RuntimeError('Not running with the Werkzeug Server')
-    func()
-
-
-@app.route('/shutdown', methods=['GET'])
-def shutdown():
-    shutdown_server()
-    return 'Server shutting down...'
 
 
 @app.route('/')
@@ -94,9 +80,17 @@ def open_folder(path):
         subprocess.Popen(["xdg-open", path])
 
 
+# cool guy
 class FlaskThread(Thread):
     def __init__(self):
         Thread.__init__(self)
 
     def run(self):
         app.run(port=5000, host='127.0.0.1')
+
+    def shutdownFromDifferentThread(self):
+        print(self)
+        self.start()
+        self.isDaemon()
+        print(self.is_alive())
+        print(self.setName('hello'))
