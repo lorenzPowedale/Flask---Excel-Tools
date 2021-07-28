@@ -3,7 +3,7 @@ import os
 import platform
 import subprocess
 from threading import Thread
-from python_files import zerokWh_charges, compareTwoFilesForIndexes, check_overlap, allErrorsInOneFile
+from python_files import zerokWh_charges, compareTwoFilesForIndexes, check_overlap, allErrorsInOneFile, changeDateForElasticSearch
 
 app = Flask(__name__)
 
@@ -38,6 +38,19 @@ def overlap():
 def overlapPost():
     path = request.form['text1']
     check_overlap.getOverlaps(path)
+    path = path[:path.rindex("/") + 1]
+    open_folder(path)
+    return render_template('success.html')
+
+@app.route('/elasticsearch', methods=['GET'])
+def elasticsearch():
+    return render_template('elasticsearch.html')
+
+
+@app.route('/elasticsearch', methods=['POST'])
+def elasticsearchPost():
+    path = request.form['text1']
+    changeDateForElasticSearch.toElasticSearchDate(path)
     path = path[:path.rindex("/") + 1]
     open_folder(path)
     return render_template('success.html')
