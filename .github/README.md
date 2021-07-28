@@ -226,10 +226,10 @@ This has exactly the same effect as the embeded window!!!
 
 [linkedin-url]: https://www.instagram.com/lorenzbauer_/
 
-[product-screenshot]: static/assets/img.png
+[product-screenshot]: ../static/assets/img.png
 
-[pitain-screenshot]: static/assets/pitain.png
+[pitain-screenshot]: ../static/assets/pitain.png
 
-[success-screenshot]: static/assets/success.png
+[success-screenshot]: ../static/assets/success.png
 
-[path-screenshot]: static/assets/path.png 
+[path-screenshot]: ../static/assets/path.png 
