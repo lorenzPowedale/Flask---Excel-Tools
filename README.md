@@ -39,7 +39,7 @@
     <br />
     I made an installation Guide in form of an powerpoint aswell.(Python install guide etc). 
     <br />
-    If you don't know how to get the tool running. Please use the Powerpoint
+     If you don't know how to get the tool running. Please use the Powerpoint
     <br />
     <br />
 </p>
@@ -139,6 +139,9 @@ work well in this space. You may also link to more resources.
 
 3. Be happy and enjoy!
    ![Path][success-screenshot]
+   
+4. If you still have trouble I made a tutorial
+   [Youtube Video](https://youtu.be/ziYiXqUGozs)
 
 <!-- CONTRIBUTING -->
 
