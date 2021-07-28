@@ -35,5 +35,5 @@ def getWrongIndexes(df):
         group = group[group['Energy stop (wh)'] - group['Energy initial (wh)'] != 0]
         data_copy = data_copy.append(group)
     data_copy = data_copy[data_copy['Energy initial (wh)'].notnull()]
-    data_copy['Reason'] = 'overlap(gap)'
+    data_copy['Reason'] = 'gap'
     return data_copy
