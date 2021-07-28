@@ -54,7 +54,8 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ url_for('oneFile') }}">Flag all Errors in 1 File</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ url_for('elasticsearch') }}">Change File Format for Elasticsearch</a></div>
+                                <a class="dropdown-item" href="{{ url_for('elasticsearch') }}">Change File Format for Elasticsearch</a>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -62,8 +63,13 @@
         </nav>
         <!-- Page content-->
         <div class="container-fluid">
-            <h1 class="mt-4">Success</h1>
-            <p>The file is saved at the same location as the CSV File.<br> A explorer/finder window was opened.</p>
+            <h1 class="mt-4">Change File Format to Elasticsearch preferred Format(removes +02, +01 timezones)</h1>
+            <p>This tool will change the gives file. you maybe want to make a copy of it before</p>
+            <form method="POST">
+                <input name="text1" placeholder="Path to CSV: ">
+                <br>
+                <input type="submit">
+            </form>
         </div>
     </div>
 </div>
